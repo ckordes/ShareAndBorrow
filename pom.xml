@@ -61,10 +61,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-    </dependency>
-    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
     </dependency>

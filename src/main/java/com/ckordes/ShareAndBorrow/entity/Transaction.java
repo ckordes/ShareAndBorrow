@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Transaction {
@@ -13,7 +15,7 @@ public class Transaction {
 
     private BigDecimal finalPrice;
     private BigDecimal agreedPrice;
-    private String message;
+    private String Message;
     private Person personOwner;
     private Person personBorrower;
 

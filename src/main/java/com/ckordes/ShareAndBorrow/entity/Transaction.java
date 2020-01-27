@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Transaction {
@@ -13,9 +11,8 @@ public class Transaction {
     @GeneratedValue
     private long id;
 
-    private BigDecimal finalPrice;
-    private BigDecimal agreedPrice;
-    private String Message;
+    private Price price;
+    private boolean agreedPrice;
     private Person personOwner;
     private Person personBorrower;
 
@@ -28,30 +25,6 @@ public class Transaction {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public BigDecimal getFinalPrice() {
-        return finalPrice;
-    }
-
-    public void setFinalPrice(BigDecimal finalPrice) {
-        this.finalPrice = finalPrice;
-    }
-
-    public BigDecimal getAgreedPrice() {
-        return agreedPrice;
-    }
-
-    public void setAgreedPrice(BigDecimal agreedPrice) {
-        this.agreedPrice = agreedPrice;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public Person getPersonOwner() {
@@ -68,5 +41,21 @@ public class Transaction {
 
     public void setPersonBorrower(Person personBorrower) {
         this.personBorrower = personBorrower;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
+
+    public void setPrice(Price price) {
+        this.price = price;
+    }
+
+    public boolean isAgreedPrice() {
+        return agreedPrice;
+    }
+
+    public void setAgreedPrice(boolean agreedPrice) {
+        this.agreedPrice = agreedPrice;
     }
 }

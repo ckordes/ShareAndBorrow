@@ -1,10 +1,10 @@
 package com.ckordes.ShareAndBorrow.repository;
 
-import com.ckordes.ShareAndBorrow.entity.Address;
+import com.ckordes.ShareAndBorrow.entity.Tool;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Long> {
-    Address findById(long id);
+public interface ToolRepository extends JpaRepository<Tool, Long> {
+    Tool findById(long id);
 }

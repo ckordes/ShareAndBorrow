@@ -3,6 +3,8 @@ package com.ckordes.ShareAndBorrow.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import java.time.LocalDateTime;
 
 @Entity
 public class Message {
@@ -12,8 +14,22 @@ public class Message {
 
     private Transaction transaction;
     private String textMessage;
+    private LocalDateTime dateCreated;
 
     public Message() {
+    }
+
+    @PrePersist
+    public void prePresist() {
+        dateCreated = LocalDateTime.now();
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
     public long getId() {

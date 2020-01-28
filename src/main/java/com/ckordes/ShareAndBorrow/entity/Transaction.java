@@ -3,7 +3,6 @@ package com.ckordes.ShareAndBorrow.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 
 @Entity
 public class Transaction {
@@ -11,10 +10,9 @@ public class Transaction {
     @GeneratedValue
     private long id;
 
-    private Price price;
-    private boolean agreedPrice;
     private Person personOwner;
     private Person personBorrower;
+    private boolean agreedPrice;
 
     public Transaction() {
     }
@@ -41,14 +39,6 @@ public class Transaction {
 
     public void setPersonBorrower(Person personBorrower) {
         this.personBorrower = personBorrower;
-    }
-
-    public Price getPrice() {
-        return price;
-    }
-
-    public void setPrice(Price price) {
-        this.price = price;
     }
 
     public boolean isAgreedPrice() {

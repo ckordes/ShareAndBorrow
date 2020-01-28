@@ -3,9 +3,6 @@ package com.ckordes.ShareAndBorrow.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Transaction {

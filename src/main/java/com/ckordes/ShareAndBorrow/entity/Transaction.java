@@ -13,11 +13,9 @@ public class Transaction {
     @GeneratedValue
     private long id;
 
-    private BigDecimal finalPrice;
-    private BigDecimal agreedPrice;
-    private String Message;
     private Person personOwner;
     private Person personBorrower;
+    private boolean agreedPrice;
 
     public Transaction() {
     }
@@ -28,30 +26,6 @@ public class Transaction {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public BigDecimal getFinalPrice() {
-        return finalPrice;
-    }
-
-    public void setFinalPrice(BigDecimal finalPrice) {
-        this.finalPrice = finalPrice;
-    }
-
-    public BigDecimal getAgreedPrice() {
-        return agreedPrice;
-    }
-
-    public void setAgreedPrice(BigDecimal agreedPrice) {
-        this.agreedPrice = agreedPrice;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public Person getPersonOwner() {
@@ -68,5 +42,13 @@ public class Transaction {
 
     public void setPersonBorrower(Person personBorrower) {
         this.personBorrower = personBorrower;
+    }
+
+    public boolean isAgreedPrice() {
+        return agreedPrice;
+    }
+
+    public void setAgreedPrice(boolean agreedPrice) {
+        this.agreedPrice = agreedPrice;
     }
 }

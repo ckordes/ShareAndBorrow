@@ -1,8 +1,6 @@
 package com.ckordes.ShareAndBorrow.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -10,7 +8,7 @@ public class Price {
     @Id
     @GeneratedValue
     private long id;
-
+    @ManyToOne
     private Transaction transaction;
     private BigDecimal price;
 

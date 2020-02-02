@@ -1,6 +1,8 @@
 package com.ckordes.ShareAndBorrow.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,9 +23,9 @@ public class Person {
     @OneToOne
     private Address address;
     @OneToMany (fetch = FetchType.EAGER)
-    private List<Tool> tools;
-    @ManyToMany
-    private Set<Role> roles;
+    private List<Tool> tools = new ArrayList<>();
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Set<Role> roles = new HashSet<>();
 
     public Person() {
     }

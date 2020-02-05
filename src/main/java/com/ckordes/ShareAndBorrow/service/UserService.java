@@ -1,9 +1,9 @@
 package com.ckordes.ShareAndBorrow.service;
 
 
-import com.ckordes.ShareAndBorrow.entity.Person;
+import com.ckordes.ShareAndBorrow.entity.User;
 
 public interface UserService {
-        Person findPersonByEmail(String email);
-        void saveUser(Person person);
+        User findByEmail (String email);
+        void saveUser(User user);
     }

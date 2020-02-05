@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Person {
+public class User {
 
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ public class Person {
     @ManyToMany (fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
-    public Person() {
+    public User() {
     }
 
     public long getId() {

@@ -1,8 +1,8 @@
 package com.ckordes.ShareAndBorrow.service;
 
-import com.ckordes.ShareAndBorrow.entity.Person;
+import com.ckordes.ShareAndBorrow.entity.User;
 import com.ckordes.ShareAndBorrow.entity.Role;
-import com.ckordes.ShareAndBorrow.repository.PersonRepository;
+import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import com.ckordes.ShareAndBorrow.repository.RoleRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,26 +12,26 @@ import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final PersonRepository personRepository;
+    private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-    public UserServiceImpl(PersonRepository personRepository, RoleRepository roleRepository,
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
                            BCryptPasswordEncoder passwordEncoder) {
-        this.personRepository = personRepository;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
 
     @Override
-    public Person findPersonByEmail(String email) {
-        return personRepository.findByEmail(email);
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
     @Override
-    public void saveUser(Person person) {
-        person.setPassword(passwordEncoder.encode(person.getPassword()));
+    public void saveUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role personRole = roleRepository.findByName("ROLE_USER");
-        person.setRoles(new HashSet<Role>(Arrays.asList(personRole)));
-        personRepository.save(person);
+        user.setRoles(new HashSet<Role>(Arrays.asList(personRole)));
+        userRepository.save(user);
     }
 
 }

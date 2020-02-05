@@ -8,9 +8,9 @@ public class Transaction {
     @GeneratedValue
     private long id;
     @OneToOne
-    private Person personOwner;
+    private User userOwner;
     @OneToOne
-    private Person personBorrower;
+    private User userBorrower;
     private boolean agreedPrice;
 
     public Transaction() {
@@ -24,20 +24,20 @@ public class Transaction {
         this.id = id;
     }
 
-    public Person getPersonOwner() {
-        return personOwner;
+    public User getUserOwner() {
+        return userOwner;
     }
 
-    public void setPersonOwner(Person personOwner) {
-        this.personOwner = personOwner;
+    public void setUserOwner(User userOwner) {
+        this.userOwner = userOwner;
     }
 
-    public Person getPersonBorrower() {
-        return personBorrower;
+    public User getUserBorrower() {
+        return userBorrower;
     }
 
-    public void setPersonBorrower(Person personBorrower) {
-        this.personBorrower = personBorrower;
+    public void setUserBorrower(User userBorrower) {
+        this.userBorrower = userBorrower;
     }
 
     public boolean isAgreedPrice() {

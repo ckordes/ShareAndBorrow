@@ -19,7 +19,7 @@ public class User {
     private String pesel;
     private String email;
     private String password;
-    private String login;
+    private String username;
     @OneToOne
     private Address address;
     @OneToMany (fetch = FetchType.EAGER)
@@ -70,12 +70,12 @@ public class User {
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String login) {
+        this.username = login;
     }
 
     public Address getAddress() {

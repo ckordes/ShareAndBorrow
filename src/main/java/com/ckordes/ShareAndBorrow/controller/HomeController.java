@@ -1,6 +1,6 @@
 package com.ckordes.ShareAndBorrow.controller;
 
-import com.ckordes.ShareAndBorrow.repository.PersonRepository;
+import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import com.ckordes.ShareAndBorrow.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ public class HomeController {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired
-    private PersonRepository personRepository;
+    private UserRepository userRepository;
 
     @RequestMapping("/")
     public String homeAction (Model model) { return "index";}

@@ -17,6 +17,7 @@ public class User {
     private String lastName;
     @Column(nullable = false, unique = true)
     private String pesel;
+    @Column(nullable=false,unique = true)
     private String email;
     private String password;
     private String username;

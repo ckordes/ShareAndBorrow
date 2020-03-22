@@ -22,9 +22,10 @@ public class UserController {
         User user = new User();
         user.setUsername("ad");
         user.setPassword("ad");
+        user.setEmail("ad@ad.com");
         user.setPesel("88080811122");
         userService.saveUser(user);
-        return "admin";
+        return "login";
     }
 
 

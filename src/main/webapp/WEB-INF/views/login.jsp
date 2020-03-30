@@ -22,10 +22,10 @@
 <%@include file="header.jsp" %>
 
 <form method="post" action="/login">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> User Name : <input type="text" name="username" id="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password" id="password"/> </label></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input name="submit" type="submit" value="Sign In"/></div>
 
 </form>
 

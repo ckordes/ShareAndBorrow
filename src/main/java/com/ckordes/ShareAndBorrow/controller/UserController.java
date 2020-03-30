@@ -20,10 +20,10 @@ public class UserController {
     @ResponseBody
     public String createUser() {
         User user = new User();
-        user.setUsername("ad");
-        user.setPassword("ad");
-        user.setEmail("ad@ad.com");
-        user.setPesel("88080811122");
+        user.setUsername("aa");
+        user.setPassword("aa");
+        user.setEmail("aa@aa.com");
+        user.setPesel("88080811333");
         userService.saveUser(user);
         return "login";
     }

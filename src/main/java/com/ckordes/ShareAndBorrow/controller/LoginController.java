@@ -29,42 +29,11 @@ public class LoginController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
         return "login";
-
     }
 
-//    @PostMapping("/login")
-//    public String homePageAfterLogin() {
-//        return "redirect:/";
-//    }
-
-//    @PostMapping("/login")
-//    public String homePageAfterLogin() {
-//        return "/";
-//    }
-
-
-//    public String login(@RequestParam(required = false) String error, Model model) {
-//        if (error != null) {
-//            model.addAttribute("loginError", "Błędny e-mail lub hasło");
-//        }
-//        return "/";
-//    }
-//
-
-
-//        ModelAndView modelAndView = new ModelAndView();
-//        if (error != null) {
-//            modelAndView.setViewName("403");
-//        } else modelAndView.setViewName("login");
-//
-//        return modelAndView;
-////        return "login";
-
-//    @PostMapping(value = "/login")
-//    public String login(@ModelAttribute("loginMode") LoginMode loginMode) {
-//
-//        return "redirect:/";
-//
-//
-//    }
+    @GetMapping("/register")
+    public String registerUser(Model model){
+        model.addAttribute("userRegister", new User());
+        return "register";
+    }
 }

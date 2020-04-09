@@ -2,10 +2,14 @@ package com.ckordes.ShareAndBorrow.controller;
 
 import com.ckordes.ShareAndBorrow.entity.User;
 import com.ckordes.ShareAndBorrow.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Validator;
+
 
 @Controller
 @RequestMapping("/user")
@@ -15,6 +19,9 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
+    @Autowired
+    Validator validator;
 
     @GetMapping("/create-user")
     @ResponseBody

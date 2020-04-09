@@ -1,6 +1,11 @@
 package com.ckordes.ShareAndBorrow.entity;
 
+import org.hibernate.validator.constraints.pl.PESEL;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -13,14 +18,24 @@ public class User {
     @GeneratedValue
     private long id;
 
+    @NotBlank
+    @Size(min = 2, max = 30, message = "Length of the name must be between 2 and 30 characters.")
     private String firstName;
+    @NotBlank
+    @Size(min = 2, max = 30, message = "Length of the lastname must be between 2 and 30 characters.")
     private String lastName;
     @Column(nullable = false, unique = true)
+    @PESEL
     private String pesel;
     @Column(nullable=false,unique = true)
+    @Email
     private String email;
+    @NotBlank
+    @Size(min = 8, max = 30, message = "Length of the password must be between 2 and 30 characters.")
     private String password;
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(min = 2, max = 20, message = "Length of the username must be between 2 and 30 characters.")
     private String username;
     @OneToOne
     private Address address;

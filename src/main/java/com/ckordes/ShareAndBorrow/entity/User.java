@@ -35,7 +35,7 @@ public class User {
     private String password;
     @Column(nullable = false, unique = true)
     @NotBlank
-    @Size(min = 2, max = 20, message = "Length of the username must be between 2 and 30 characters.")
+    @Size(min = 2, max = 20, message = "Length of the username must be between 2 and 20 characters.")
     private String username;
     @OneToOne
     private Address address;

@@ -17,11 +17,13 @@ public class Address {
     private String postalCode;
     private String voievodyship;
     private String country;
+    private String userName;
 
     public Address() {
     }
+
     public Address(String street, String homeNumber, String flatNumber, String city, String postalCode,
-                   String voievodyship, String country){
+                   String voievodyship, String country, String userName) {
         this.street = street;
         this.homeNumber = homeNumber;
         this.flatNumber = flatNumber;
@@ -29,6 +31,7 @@ public class Address {
         this.postalCode = postalCode;
         this.voievodyship = voievodyship;
         this.country = country;
+        this.userName = userName;
     }
 
     public long getId() {
@@ -93,5 +96,13 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

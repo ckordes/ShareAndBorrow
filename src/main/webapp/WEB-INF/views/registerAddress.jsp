@@ -21,7 +21,7 @@
 <body>
 <%@include file="header.jsp" %>
 
-<form:form method="post" modelAttribute="addressRegister">
+<form:form method="post" modelAttribute="addressRegister" action="/address">
     Street: <form:input path="street"/><br/>
     <form:errors path="street"/><br/>
     Home number: <form:input path="homeNumber"/><br/>

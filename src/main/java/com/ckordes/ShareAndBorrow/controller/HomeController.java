@@ -1,9 +1,11 @@
 package com.ckordes.ShareAndBorrow.controller;
 
 import com.ckordes.ShareAndBorrow.entity.Address;
+import com.ckordes.ShareAndBorrow.entity.Role;
 import com.ckordes.ShareAndBorrow.entity.Tool;
 import com.ckordes.ShareAndBorrow.entity.User;
 import com.ckordes.ShareAndBorrow.repository.AddressRepository;
+import com.ckordes.ShareAndBorrow.repository.ToolRepository;
 import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import com.ckordes.ShareAndBorrow.repository.RoleRepository;
 import com.ckordes.ShareAndBorrow.service.UserService;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Controller
@@ -28,6 +33,8 @@ public class HomeController {
     private UserRepository userRepository;
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
+    private ToolRepository toolRepository;
 
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -86,10 +93,17 @@ public class HomeController {
             return "registerAddress";
         }
         User user = (User) httpSession.getAttribute("userRegister");
+        address.setUserName(user.getUsername());
         addressRepository.save(address);
         address= addressRepository.findByUserName(user.getUsername());
         user.setAddress(address);
+        Tool tool = toolRepository.findById(1);
+        List<Tool> toolsList = new ArrayList<>(1);
+        toolsList.add(tool);
+        user.setTools(toolsList);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
         return "redirect:/";
     }

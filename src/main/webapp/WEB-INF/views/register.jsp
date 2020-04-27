@@ -22,20 +22,20 @@
 <h2> <c:out value="${error}"></c:out></h2>
 
 <form:form action="/register" method="post" modelAttribute="userRegister">
-First Name: <form:input path="firstName"/>
+First Name: <form:input path="firstName"/><br/>
     <form:errors path="firstName"/><br/>
-Last Name: <form:input path="lastName"/>
+Last Name: <form:input path="lastName"/><br/>
     <form:errors path="lastName"/><br/>
-PESEL: <form:input path="pesel"/>
+PESEL: <form:input path="pesel"/><br/>
     <form:errors path="pesel"/><br/>
-E-mail: <form:input path="email"/>
+E-mail: <form:input path="email"/><br/>
     <form:errors path="email"/><br/>
-User name: <form:input path="username"/>
+User name: <form:input path="username"/><br/>
     <form:errors path="username"/><br/>
-Password:<form:input path="password"/>
+Password:<form:input path="password" type="password"/><br/>
     <form:errors path="password"/><br/>
 <div>
-    Repeat password: <input name="password2" placeholder="Repeat Password."/><br/>
+    Repeat password: <input type="password" name="password2" placeholder="Repeat Password."/><br/>
 </div>
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
     <input name ="submit" type="submit" value="Register Me!">

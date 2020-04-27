@@ -105,6 +105,6 @@ public class HomeController {
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 }

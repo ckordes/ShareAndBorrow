@@ -3,6 +3,8 @@ package com.ckordes.ShareAndBorrow.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Address {
@@ -10,13 +12,22 @@ public class Address {
     @GeneratedValue
     private long id;
 
+    @NotBlank
     private String street;
+    @NotBlank
     private String homeNumber;
+    @NotBlank
     private String flatNumber;
+    @NotBlank
     private String city;
+    @NotBlank
+    @Pattern(regexp = "[0-9]{2}-[0-9]{3}",message = "Zip code format should be 00-000, please correct it accordingly!")
     private String postalCode;
+    @NotBlank
     private String voievodyship;
+    @NotBlank
     private String country;
+    @NotBlank
     private String userName;
 
     public Address() {

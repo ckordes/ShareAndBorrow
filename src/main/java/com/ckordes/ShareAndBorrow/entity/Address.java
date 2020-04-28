@@ -27,7 +27,6 @@ public class Address {
     private String voievodyship;
     @NotBlank
     private String country;
-    @NotBlank
     private String userName;
 
     public Address() {

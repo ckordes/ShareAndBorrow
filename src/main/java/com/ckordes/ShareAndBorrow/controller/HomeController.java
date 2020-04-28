@@ -93,6 +93,9 @@ public class HomeController {
             return "registerAddress";
         }
         User user = (User) httpSession.getAttribute("userRegister");
+        if (user == null){
+            return "redirect:/register";
+        }
         address.setUserName(user.getUsername());
         addressRepository.save(address);
         address= addressRepository.findByUserName(user.getUsername());

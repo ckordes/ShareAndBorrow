@@ -8,10 +8,10 @@ import com.ckordes.ShareAndBorrow.repository.AddressRepository;
 import com.ckordes.ShareAndBorrow.repository.ToolRepository;
 import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import com.ckordes.ShareAndBorrow.repository.RoleRepository;
-import com.ckordes.ShareAndBorrow.service.UserService;
 import com.ckordes.ShareAndBorrow.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,12 +35,13 @@ public class HomeController {
     private AddressRepository addressRepository;
     @Autowired
     private ToolRepository toolRepository;
-
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    public HomeController(BCryptPasswordEncoder passwordEncoder){
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+//    private final BCryptPasswordEncoder passwordEncoder;
+//
+//    public HomeController(BCryptPasswordEncoder passwordEncoder){
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     private UserServiceImpl userServiceImpl;
 

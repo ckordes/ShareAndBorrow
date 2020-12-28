@@ -3,6 +3,8 @@ package com.ckordes.ShareAndBorrow.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -21,14 +23,18 @@ public class AppConfig implements WebMvcConfigurer {
     @Bean
     public JavaMailSenderImpl mailSender() {
         {
-            JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-            return javaMailSender;
+            return new JavaMailSenderImpl();
         }
     }
 
     @Bean
     public Validator validator() {
         return new LocalValidatorFactoryBean();
+    }
+
+    @Bean
+    public PasswordEncoder encoder(){
+        return new BCryptPasswordEncoder();
     }
 
     @Override
@@ -42,6 +48,5 @@ public class AppConfig implements WebMvcConfigurer {
                         "classpath:/static/css/",
                         "classpath:/static/js/");
     }
-
 
 }

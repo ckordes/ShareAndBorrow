@@ -24,7 +24,7 @@ public class Address {
     @Pattern(regexp = "[0-9]{2}-[0-9]{3}",message = "Zip code format should be 00-000, please correct it accordingly!")
     private String postalCode;
     @NotBlank
-    private String voievodyship;
+    private String voivodeship;
     @NotBlank
     private String country;
     private String userName;
@@ -33,13 +33,13 @@ public class Address {
     }
 
     public Address(String street, String homeNumber, String flatNumber, String city, String postalCode,
-                   String voievodyship, String country, String userName) {
+                   String voivodeship, String country, String userName) {
         this.street = street;
         this.homeNumber = homeNumber;
         this.flatNumber = flatNumber;
         this.city = city;
         this.postalCode = postalCode;
-        this.voievodyship = voievodyship;
+        this.voivodeship = voivodeship;
         this.country = country;
         this.userName = userName;
     }
@@ -92,12 +92,12 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public String getVoievodyship() {
-        return voievodyship;
+    public String getVoivodeship() {
+        return voivodeship;
     }
 
-    public void setVoievodyship(String voievodyship) {
-        this.voievodyship = voievodyship;
+    public void setVoivodeship(String voievodyship) {
+        this.voivodeship = voievodyship;
     }
 
     public String getCountry() {

@@ -128,4 +128,7 @@ public class User {
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
+
+    //additional methods
+    public String getFullName(){return (this.id + " "+ this.firstName+" "+this.lastName);}
 }

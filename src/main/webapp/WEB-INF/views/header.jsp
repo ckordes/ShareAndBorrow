@@ -32,5 +32,6 @@
 
         <%--        update of link needed--%>
         <a href="/user/changePassword" style="background: aquamarine">Change E-mail or Password</a>
+        <a href="/user/changeAddress" style="background: aquamarine">Change Address</a>
     </sec:authorize>
 </header>

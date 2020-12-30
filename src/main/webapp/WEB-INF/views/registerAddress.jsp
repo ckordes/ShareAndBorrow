@@ -32,8 +32,8 @@
     <form:errors path="city"/><br/>
     Postal Code: <form:input path="postalCode"/><br/>
     <form:errors path="postalCode"/><br/>
-    Voievodyship:<form:input path="voievodyship"/><br/>
-    <form:errors path="voievodyship"/><br/>
+    Voievodyship:<form:input path="voivodeship"/><br/>
+    <form:errors path="voivodeship"/><br/>
     Country:<form:input path="country"/><br/>
     <form:errors path="country"/><br/>
     <input name ="submit" type="submit" value="Register Address!">

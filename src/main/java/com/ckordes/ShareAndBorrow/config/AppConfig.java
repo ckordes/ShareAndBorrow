@@ -32,11 +32,6 @@ public class AppConfig implements WebMvcConfigurer {
         return new LocalValidatorFactoryBean();
     }
 
-    @Bean
-    public PasswordEncoder encoder(){
-        return new BCryptPasswordEncoder();
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(

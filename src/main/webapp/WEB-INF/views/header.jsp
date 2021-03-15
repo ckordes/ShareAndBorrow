@@ -31,6 +31,7 @@
         </form>
 
         <%--        update of link needed--%>
+        <a href="/user/addTool" style="background: aquamarine">Add Your Tool</a>
         <a href="/user/changePassword" style="background: aquamarine">Change E-mail or Password</a>
         <a href="/user/changeAddress" style="background: aquamarine">Change Address</a>
     </sec:authorize>

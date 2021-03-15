@@ -1,21 +1,25 @@
 package com.ckordes.ShareAndBorrow.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Role {
-
+public class ToolType {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    @NotEmpty
-    private String name;
+    @NotBlank
+    private String type;
+
+    public ToolType() {
+    }
+
+    public ToolType(@NotBlank String type) {
+        this.type = type;
+    }
 
     public Long getId() {
         return id;
@@ -25,11 +29,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 }

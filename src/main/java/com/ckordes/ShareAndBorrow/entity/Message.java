@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class Message {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     @ManyToOne
     private Transaction transaction;
@@ -18,7 +18,7 @@ public class Message {
     }
 
     @PrePersist
-    public void prePresist() {
+    public void prePersist() {
         dateCreated = LocalDateTime.now();
     }
 
@@ -30,11 +30,11 @@ public class Message {
         this.dateCreated = dateCreated;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

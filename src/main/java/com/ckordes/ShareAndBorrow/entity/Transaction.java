@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Transaction {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     @OneToOne
     private User userOwner;
     @OneToOne
@@ -16,11 +16,11 @@ public class Transaction {
     public Transaction() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,9 +1,9 @@
 package com.ckordes.ShareAndBorrow.controller;
 
-import com.ckordes.ShareAndBorrow.entity.Address;
-import com.ckordes.ShareAndBorrow.entity.User;
-import com.ckordes.ShareAndBorrow.entity.UserCredentialsModifications;
+import com.ckordes.ShareAndBorrow.entity.*;
 import com.ckordes.ShareAndBorrow.repository.AddressRepository;
+import com.ckordes.ShareAndBorrow.repository.ToolRepository;
+import com.ckordes.ShareAndBorrow.repository.ToolTypeRepository;
 import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,8 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.Binding;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -27,9 +30,18 @@ public class UserController {
     private UserRepository userRepository;
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
+    private ToolRepository toolRepository;
+    @Autowired
+    private ToolTypeRepository toolTypeRepository;
+
+    @ModelAttribute("ToolTypeList")
+    public List<ToolType> allToolTypes() {
+        return toolTypeRepository.findAll();
+    }
 
     @ModelAttribute("allUsersList")
-    public List<User> allUsersList(){
+    public List<User> allUsersList() {
         return userRepository.findAll();
     }
 
@@ -38,23 +50,23 @@ public class UserController {
         User user = new User();
         String userName = authentication.getName();
         user = userRepository.findByUsername(userName);
-        UserCredentialsModifications userCredentialsModifications= new UserCredentialsModifications("","",user.getEmail());
-        model.addAttribute("userCredentialsModifications",userCredentialsModifications);
+        UserCredentialsModifications userCredentialsModifications = new UserCredentialsModifications("", "", user.getEmail());
+        model.addAttribute("userCredentialsModifications", userCredentialsModifications);
         return "/changePassword";
     }
 
     @PostMapping("/changePassword")
     public String changeUserInfo(@ModelAttribute @Valid UserCredentialsModifications userCredentialsModifications, BindingResult bindingResult, Authentication authentication, Model model) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "/changePassword";
         }
         if (!userCredentialsModifications.checkPasswordsEqual()) {
             String errorMsg = "Passwords don't match! Please insert again correct passwords!";
-            model.addAttribute("errorMsg",errorMsg);
+            model.addAttribute("errorMsg", errorMsg);
             return "/changePassword";
         }
         Optional<User> optionalUser = Optional.ofNullable(userRepository.findByEmail(userCredentialsModifications.getEmail()));
-        if (optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             if (!authentication.getName().equals(user.getUsername())) {
                 String errorMsg = "Given e-mail already exists!" + "/n" + "Please provide new e-mail!";
@@ -73,20 +85,48 @@ public class UserController {
     }
 
     @GetMapping("/changeAddress")
-    public String changeUserAddress(Model model, Authentication authentication){
+    public String changeUserAddress(Model model, Authentication authentication) {
         User user = userRepository.findByUsername(authentication.getName());
         Address address = user.getAddress();
-        model.addAttribute("userAddress",address);
+        model.addAttribute("userAddress", address);
         return "/changeAddress";
     }
+
     @PostMapping("/changeAddress")
-    public String changeUserAddress(@ModelAttribute ("userAddress")  @Valid Address userAddress, BindingResult bindingResult,Authentication authentication){
-        if(bindingResult.hasErrors()){
+    public String changeUserAddress(@ModelAttribute("userAddress") @Valid Address userAddress, BindingResult bindingResult, Authentication authentication) {
+        if (bindingResult.hasErrors()) {
             return "/changeAddress";
         }
         Address addressInDB = addressRepository.findByUserName(authentication.getName());
         addressInDB = userAddress;
         addressRepository.save(addressInDB);
+        return "redirect:/";
+    }
+
+    @GetMapping("/addTool")
+    public String addToolToUser(Model model, Authentication authentication) {
+        User user = userRepository.findByUsername(authentication.getName());
+        Tool tool = new Tool();
+        model.addAttribute("addTool", tool);
+        return "/addTool";
+    }
+
+    @PostMapping("/addTool")
+    public String addToolToUser(@ModelAttribute("addTool") @Valid Tool addTool, BindingResult bindingResult, Authentication authentication) {
+        if (bindingResult.hasErrors()) {
+            return "/addTool";
+        }
+        User user = userRepository.findByUsername(authentication.getName());
+        addTool.setUserID(user.getId());
+        toolRepository.save(addTool);
+        List<Tool> userTools = toolRepository.findAllByUserID(user.getId());
+        Long lastTool = userTools.stream().mapToLong(Tool::getId).max().orElseThrow(NoSuchElementException::new);
+        Optional<Tool> toolOptional = toolRepository.findById(lastTool);
+        if (toolOptional.isPresent()) {
+            Tool toolToAdd = toolOptional.get();
+            user.getTools().add(toolToAdd);
+            userRepository.save(user);
+        }
         return "redirect:/";
     }
 
@@ -102,6 +142,8 @@ public class UserController {
 //        return "login";
 //    }
 
+    //x-> tool.getid
+    //Tool::getId
 
 
 }

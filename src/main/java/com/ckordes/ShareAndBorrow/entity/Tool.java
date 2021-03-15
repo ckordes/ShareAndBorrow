@@ -1,39 +1,36 @@
 package com.ckordes.ShareAndBorrow.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Tool {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
-    private String type;
+    @NotBlank
+    @ManyToOne
+    private ToolType toolType;
+    @NotBlank
     private String name;
+
+    private long userID;
 
     public Tool() {
     }
-    public Tool(String type, String name){
-        this.type = type;
+
+    public Tool(ToolType type, String name) {
+        this.toolType = type;
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getName() {
@@ -43,4 +40,12 @@ public class Tool {
     public void setName(String name) {
         this.name = name;
     }
+
+    public long getUserID() { return userID; }
+
+    public void setUserID(long userID) { this.userID = userID; }
+
+    public ToolType getToolType() { return toolType; }
+
+    public void setToolType(ToolType toolType) { this.toolType = toolType; }
 }

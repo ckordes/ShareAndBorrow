@@ -11,7 +11,6 @@ public class ToolType {
     @GeneratedValue
     private Long id;
 
-    @NotBlank
     private String type;
 
     public ToolType() {

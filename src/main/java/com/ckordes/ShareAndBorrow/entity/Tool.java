@@ -9,7 +9,6 @@ public class Tool {
     @GeneratedValue
     private Long id;
 
-    @NotBlank
     @ManyToOne
     private ToolType toolType;
     @NotBlank

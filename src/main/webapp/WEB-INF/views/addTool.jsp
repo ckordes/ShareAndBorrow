@@ -22,7 +22,7 @@
 <body>
 <%@include file="header.jsp" %>
 <form:form modelAttribute="addTool" method="post">
-    Type: <form:select path="toolType" multiple="false" items="ToolTypeList" itemValue="id" itemLabel="type" /><br/> <form:errors path="toolType"/><br/>
+    Type: <form:select path="toolType" multiple="false" items="${ToolTypeList}" itemValue="id" itemLabel="type" /><br/> <form:errors path="toolType"/><br/>
     Name: <form:input path="name"/><br/> <form:errors path="name"/><br/>
     <input type="submit" value="Add Tool">
 </form:form>

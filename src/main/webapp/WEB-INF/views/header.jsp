@@ -13,7 +13,7 @@
     <sec:authorize access="hasRole('USER')">
 
 <%--        update of link needed--%>
-        <a href="/user/mainPage" style="background: aquamarine">User Zone</a>
+        <a href="/user/userZone" style="background: aquamarine">User Zone</a>
     </sec:authorize>
 
     <sec:authorize access="hasRole('ADMIN')">
@@ -31,7 +31,7 @@
         </form>
 
         <%--        update of link needed--%>
-        <a href="/user/addTool" style="background: aquamarine">Add Your Tool</a>
+<%--        <a href="/user/addTool" style="background: aquamarine">Add Your Tool</a>--%>
         <a href="/user/changePassword" style="background: aquamarine">Change E-mail or Password</a>
         <a href="/user/changeAddress" style="background: aquamarine">Change Address</a>
     </sec:authorize>

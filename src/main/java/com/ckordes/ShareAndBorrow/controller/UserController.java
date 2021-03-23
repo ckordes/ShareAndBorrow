@@ -127,8 +127,45 @@ public class UserController {
             user.getTools().add(toolToAdd);
             userRepository.save(user);
         }
-        return "redirect:/";
+        return "redirect:/user/userZone";
     }
+
+    @GetMapping("/userZone")
+    public String userZone(Model model, Authentication authentication){
+        User user = userRepository.findByUsername(authentication.getName());
+        List<Tool> toolList = toolRepository.findAllByUserID(user.getId());
+        model.addAttribute("toolList",toolList);
+
+        return "/userZone";
+    }
+
+    @GetMapping("/deleteTool/{id}")
+    public String deleteTool(@PathVariable long id, Authentication authentication){
+        Tool tool = toolRepository.findById(id);
+        User user = userRepository.findByUsername(authentication.getName());
+        user.getTools().remove(tool);
+        toolRepository.delete(tool);
+        return "redirect:/user/userZone";
+    }
+
+    @GetMapping("/editTool/{id}")
+    public String editTool(@PathVariable long id, Model model){
+        Tool tool = toolRepository.findById(id);
+        model.addAttribute("tool",tool);
+        return "/editTool";
+
+    }
+
+    @PostMapping("/editTool/{id}")
+    public String editTool( @ModelAttribute @Valid Tool tool, BindingResult bindingResult, @PathVariable long id){
+        if (bindingResult.hasErrors()){
+            return "/editTool";
+        }
+        toolRepository.save(tool);
+        return "redirect:/user/userZone";
+    }
+
+
 
 //    @GetMapping("/create-user")
 //    @ResponseBody

@@ -127,16 +127,16 @@ public class UserController {
             user.getTools().add(toolToAdd);
             userRepository.save(user);
         }
-        return "redirect:/user/userZone";
+        return "redirect:/user/toolsManagement";
     }
 
-    @GetMapping("/userZone")
-    public String userZone(Model model, Authentication authentication){
+    @GetMapping("/toolsManagement")
+    public String toolsManagement(Model model, Authentication authentication){
         User user = userRepository.findByUsername(authentication.getName());
         List<Tool> toolList = toolRepository.findAllByUserID(user.getId());
         model.addAttribute("toolList",toolList);
 
-        return "/userZone";
+        return "/toolsManagement";
     }
 
     @GetMapping("/deleteTool/{id}")
@@ -145,7 +145,7 @@ public class UserController {
         User user = userRepository.findByUsername(authentication.getName());
         user.getTools().remove(tool);
         toolRepository.delete(tool);
-        return "redirect:/user/userZone";
+        return "redirect:/user/toolsManagement";
     }
 
     @GetMapping("/editTool/{id}")
@@ -162,8 +162,27 @@ public class UserController {
             return "/editTool";
         }
         toolRepository.save(tool);
-        return "redirect:/user/userZone";
+        return "redirect:/user/toolsManagement";
     }
+
+    @RequestMapping("/userZone")
+    public String userZone(){
+        return "/userZone";
+    }
+
+    @GetMapping ("/searchTool")
+    public String searchTool(Model model){
+        ToolType toolType = new ToolType();
+        String postalCode="00-000";
+        model.addAttribute("toolType",toolType);
+        model.addAttribute("postalCode",postalCode);
+        return "/searchTool";
+    }
+//    @PostMapping("/searchTool")
+//    public String searchTool(@ModelAttribute ToolType toolTypeFromList, Model model ){
+//        List<Tool> toolList = toolRepository.findByToolTypeId(toolTypeFromList.getId());
+//        model.addAttribute("toolList",toolList);
+//    }
 
 
 

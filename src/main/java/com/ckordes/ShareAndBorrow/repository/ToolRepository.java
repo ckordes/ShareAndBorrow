@@ -10,4 +10,5 @@ import java.util.List;
 public interface ToolRepository extends JpaRepository<Tool, Long> {
     Tool findById(long id);
     List<Tool> findAllByUserID(long userID);
+    List<Tool> findByToolTypeId(long toolTypeID);
 }

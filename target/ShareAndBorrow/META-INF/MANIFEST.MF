@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: baltazarw
+Build-Jdk: 15.0.2
+Implementation-Title: ShareAndBorrow
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.ckordes
+Main-Class: ${start-class}
+

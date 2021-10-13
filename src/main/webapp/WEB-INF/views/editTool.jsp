@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: baltazarw
-  Date: 23.03.2021
-  Time: 23:33
-  To change this template use File | Settings | File Templates.
---%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -12,6 +5,8 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="/css/style.css">
+
     <title>Edit Tool</title>
 </head>
 <body>

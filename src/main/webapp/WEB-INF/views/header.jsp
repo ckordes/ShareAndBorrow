@@ -2,10 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <header class="header">
-    <div style="background: olivedrab;width: 900px;position: relative;left: 50px;">
+    <div style="background: mediumturquoise;width: 900px;position: relative;left: 50px;">
     <h1>Share and Borrow</h1>
     </div>
-<div style="background: azure;width: 900px;position: relative;left: 50px;">
+<div style="background: chartreuse;width: 900px;position: relative;left: 50px;">
     <p>
         <br>
     <sec:authorize access="!isAuthenticated()">

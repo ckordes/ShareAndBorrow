@@ -12,10 +12,14 @@
 <body>
 <%@include file="header.jsp" %></br>
 <div style="background: whitesmoke;width: 900px;position: relative;left: 50px;">
+    <br>
+    tutaj cos trzeba napisac
+    <br>
 
 <a href="/user/searchTool" style="background: aquamarine">Search Tool</a></br>
 </br>
 </div>
+<br>
 <%@include file="footer.jsp" %>
 </body>
 </html>

@@ -108,23 +108,37 @@
       <version>5.1.6.RELEASE</version>
     </dependency>
 
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>[4.13.1,)</version>
+          <scope>test</scope>
+      </dependency>
+<!--      <dependency>-->
+<!--          <groupId>org.hibernate</groupId>-->
+<!--          <artifactId>hibernate-validator</artifactId>-->
+<!--          <version>5.4.1.Final</version>-->
+<!--      </dependency>-->
       <dependency>
           <groupId>org.hibernate</groupId>
           <artifactId>hibernate-validator</artifactId>
-          <version>5.4.1.Final</version>
+          <version>[5.4.2,)</version>
       </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+<!--      <dependency>-->
+<!--          <groupId>org.springframework</groupId>-->
+<!--          <artifactId>spring-webmvc</artifactId>-->
+<!--          <version>5.1.8.RELEASE</version>-->
+<!--      </dependency>-->
+
       <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-webmvc</artifactId>
-          <version>5.1.8.RELEASE</version>
+          <version>[5.1.13,)</version>
       </dependency>
+
   </dependencies>
 
   <build>

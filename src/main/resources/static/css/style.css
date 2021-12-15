@@ -1,0 +1,18 @@
+body {
+    width: 980px;
+    margin: auto;
+    background-color: azure;
+
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%)
+}
+
+.container {
+    /*width: 960px;*/
+    /*margin: auto;*/
+    /*background-color: fuchsia;*/
+    /*position: absolute;          */
+}

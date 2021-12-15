@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/user")
@@ -172,17 +174,26 @@ public class UserController {
 
     @GetMapping ("/searchTool")
     public String searchTool(Model model){
-        ToolType toolType = new ToolType();
-        String postalCode="00-000";
-        model.addAttribute("toolType",toolType);
-        model.addAttribute("postalCode",postalCode);
+        TTandPC toolTypePostalCode = new TTandPC();
+        model.addAttribute("toolTypePostalCode",toolTypePostalCode);
         return "/searchTool";
     }
-//    @PostMapping("/searchTool")
-//    public String searchTool(@ModelAttribute ToolType toolTypeFromList, Model model ){
-//        List<Tool> toolList = toolRepository.findByToolTypeId(toolTypeFromList.getId());
-//        model.addAttribute("toolList",toolList);
-//    }
+
+    @PostMapping("/searchTool")
+    public String searchTool(@ModelAttribute TTandPC toolTypePostalCode ){
+        List<User> userList = userRepository.findAllByAddressPostalCode(toolTypePostalCode.getPostalCode());
+        List<User> usersResult;
+        Stream userStream = userList.stream();
+        usersResult= userList.stream().filter(n->{
+            List<Tool> toolList =  n.getTools();
+            Boolean bCheck = false ;
+            for ( Tool tool:toolList ) {
+                if (tool.getToolType().equals( toolTypePostalCode.getToolType())) {bCheck = true;}
+            }
+            return bCheck;
+        }).collect(Collectors.toList());
+        return "/toolsList";
+    }
 
 
 

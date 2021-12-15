@@ -14,15 +14,14 @@
 <br/>
 <div style="background: whitesmoke;width: 900px;position: relative;left: 50px;">
 
-<form:form method="post" modelAttribute="toolType">
-    <form:select path="type" multiple="false">
+<form:form method="post" modelAttribute="toolTypePostalCode">
+    <form:select path="toolType" multiple="false">
         <c:forEach items="${ToolTypeList}" var="toolTypeFromList">
             <option value=${toolTypeFromList.id}>${toolTypeFromList.type}</option>
         </c:forEach>
     </form:select></br>
-    <form:form method="post" modelAttribute="postalCode">
-        Type in postal code: <form:input path="blank" />
-    </form:form>
+    Type in postal code: <form:input  path="postalCode"/>
+
 </br>
     <input type="submit" value="Search Tools">
 </form:form>

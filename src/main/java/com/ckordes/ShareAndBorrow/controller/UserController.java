@@ -180,19 +180,24 @@ public class UserController {
     }
 
     @PostMapping("/searchTool")
-    public String searchTool(@ModelAttribute TTandPC toolTypePostalCode ){
-        List<User> userList = userRepository.findAllByAddressPostalCode(toolTypePostalCode.getPostalCode());
-        List<User> usersResult;
-        Stream userStream = userList.stream();
-        usersResult= userList.stream().filter(n->{
-            List<Tool> toolList =  n.getTools();
-            Boolean bCheck = false ;
-            for ( Tool tool:toolList ) {
-                if (tool.getToolType().equals( toolTypePostalCode.getToolType())) {bCheck = true;}
-            }
-            return bCheck;
-        }).collect(Collectors.toList());
-        return "/toolsList";
+    public String searchTool(@ModelAttribute TTandPC toolTypePostalCode, Model model){
+        List<User> userList = userRepository.finduserbyPostalCodeAndTool(toolTypePostalCode.getPostalCode(), toolTypePostalCode.getToolType().getType());
+        if (userList.isEmpty()) {
+            return "/searchTool";
+        }
+        model.addAttribute("usersToolsList",userList);
+
+//        List<User> usersResult;
+//        Stream userStream = userList.stream();
+//        usersResult= userList.stream().filter(n->{
+//            List<Tool> toolList =  n.getTools();
+//            Boolean bCheck = false ;
+//            for ( Tool tool:toolList ) {
+//                if (tool.getToolType().equals( toolTypePostalCode.getToolType())) {bCheck = true;}
+//            }
+//            return bCheck;
+//        }).collect(Collectors.toList());
+        return "/usersToolsList";
     }
 
 

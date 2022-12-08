@@ -46,7 +46,8 @@ public class HomeController {
     private UserServiceImpl userServiceImpl;
 
     @RequestMapping("/")
-    public String homeAction (Model model) { return "index";}
+    public String homeAction (Model model) {
+        return "index";}
 
     @GetMapping("/register")
     public String registerUser(Model model) {

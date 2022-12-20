@@ -10,7 +10,7 @@ public class Tool {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private ToolType toolType;
     @NotBlank
     private String name;

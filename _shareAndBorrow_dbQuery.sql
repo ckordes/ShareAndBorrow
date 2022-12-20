@@ -12,8 +12,8 @@ INSERT INTO `ShareAndBorrow`.`user_roles` VALUES ('1','1');
 insert INTO `ShareAndBorrow`.`user_roles` values ('1','2');
 INSERT INTO `ShareAndBorrow`.`user_roles` VALUES ('2','1');
 
-INSERT INTO `ShareAndBorrow`.`address` (`id`, `city`, `country`, `flat_number`, `home_number`, `postal_code`, `street`, `user_name`, `voievodyship`) VALUES ('1', 'City', 'Polska', '1f', '1h', '00-999', 'Street', 'admin', 'mazowieckie');
-INSERT INTO `ShareAndBorrow`.`address` (`id`, `city`, `country`, `flat_number`, `home_number`, `postal_code`, `street`, `user_name`, `voievodyship`) VALUES ('1', 'aCity', 'Polska', 'a1f', 'a1h', '00-999', 'aStreet', 'aaaa','mazowieckie');
+INSERT INTO `ShareAndBorrow`.`address` (`id`, `city`, `country`, `flat_number`, `home_number`, `postal_code`, `street`, `user_name`, `voivodeship`) VALUES ('1', 'City', 'Polska', '1f', '1h', '00-999', 'Street', 'admin', 'mazowieckie');
+INSERT INTO `ShareAndBorrow`.`address` (`id`, `city`, `country`, `flat_number`, `home_number`, `postal_code`, `street`, `user_name`, `voivodeship`) VALUES ('2', 'aCity', 'Polska', 'a1f', 'a1h', '00-999', 'aStreet', 'aaaa','mazowieckie');
 
 /* 
 login and password for main admin in database 

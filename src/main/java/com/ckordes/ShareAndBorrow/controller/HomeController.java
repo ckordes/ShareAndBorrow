@@ -10,7 +10,6 @@ import com.ckordes.ShareAndBorrow.repository.UserRepository;
 import com.ckordes.ShareAndBorrow.repository.RoleRepository;
 import com.ckordes.ShareAndBorrow.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +55,7 @@ public class HomeController {
         model.addAttribute("password2", "");
         return "register";
     }
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public String registerUserN(@ModelAttribute("userRegister") @Valid User user, BindingResult bindingResult, @ModelAttribute("password2") String password2, Model model, HttpSession httpSession) {
 
         if (bindingResult.hasErrors()) {
